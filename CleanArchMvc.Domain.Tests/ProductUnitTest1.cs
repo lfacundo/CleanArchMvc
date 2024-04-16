@@ -60,5 +60,21 @@ namespace CleanArchMvc.Domain.Tests
                 .Throw<DomainExceptionValidation>()
                 .WithMessage("Invalid stock value");
         }
+
+        [Fact(DisplayName = "Create Product With Null Image")]
+        public void CreateProduct_WithNullImage_ResultObjectInvalidState()
+        {
+            Action action = () => new Product(1, "Create Product", "Product Description", 9.99m, 99, null);
+            action.Should()
+                .NotThrow<DomainExceptionValidation>();
+        }
+
+        [Fact(DisplayName = "Create Product With Null Reference")]
+        public void CreateProduct_WithNullImage_NoReferenceException()
+        {
+            Action action = () => new Product(1, "Create Product", "Product Description", 9.99m, 99, null);
+            action.Should()
+                .NotThrow<NullReferenceException>();
+        }
     }
 }
