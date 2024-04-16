@@ -5,8 +5,6 @@ namespace CleanArchMvc.Domain.Entities
 {
     public sealed class Category : EntityBase
     {
-        public string Name { get; private set; }
-
         public Category(string name)
         {
             ValidateDomain(name);
