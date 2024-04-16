@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchMvc.Infra.Data.Repository
 {
-    internal class ProductRepository : RepositoryBase<Product>, IProductRepository
+    public class ProductRepository : RepositoryBase<Product>, IProductRepository
     {
         public ProductRepository(ApplicationDbContext context) : base(context) { }
 
