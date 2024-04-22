@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using CleanArchMvc.Domain.Interfaces;
 
-namespace CleanArchMvc.Application.Products.Handlers
+namespace CleanArchMvc.Application.Products.Handlers.Commands
 {
     public class ProductUpdateCommandHandler : IRequestHandler<ProductUpdateCommand, Product>
     {

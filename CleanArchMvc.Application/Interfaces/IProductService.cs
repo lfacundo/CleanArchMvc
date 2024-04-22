@@ -11,7 +11,7 @@ namespace CleanArchMvc.Application.Interfaces
     public interface IProductService
     {
         Task<IEnumerable<ProductDTO>> GetAllAsync();
-        Task<ProductDTO> GetProductCategoryAsync(int? id);
+        //Task<ProductDTO> GetProductCategoryAsync(int? id);
         Task<ProductDTO> GetByIdAsync(int? id);
         Task CreateAsync(ProductDTO obj);
         Task UpdateAsync(ProductDTO obj);

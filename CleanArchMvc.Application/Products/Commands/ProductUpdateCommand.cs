@@ -1,6 +1,6 @@
 ﻿namespace CleanArchMvc.Application.Products.Commands
 {
-    public class ProductUpdateCommand : ProductCommand
+    public class ProductUpdateCommand : ProductCommandBase
     {
         public int Id { get; set; }
     }
