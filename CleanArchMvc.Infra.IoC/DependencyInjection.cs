@@ -10,6 +10,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AspNetCoreHero.ToastNotification;
+using CleanArchMvc.Domain.Account;
+using CleanArchMvc.Infra.Data.Identity;
+using Microsoft.AspNetCore.Identity;
 
 namespace CleanArchMvc.Infra.IoC
 {
@@ -21,6 +24,16 @@ namespace CleanArchMvc.Infra.IoC
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"
             ), b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+            //Identity
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.ConfigureApplicationCookie(options =>
+                options.AccessDeniedPath = "/Account/Login");
+
+            services.AddScoped<IAuthenticate, AuthenticateService>();
+            services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
 
             //Services
             services.AddScoped<IProductService, ProductService>();
