@@ -104,7 +104,7 @@ namespace CleanArchMvc.WebUI.Controllers
         {
             if(id == null) return NotFound();
 
-            var categoryDto = _categoryService.GetByIdAsync(id);
+            var categoryDto = await _categoryService.GetByIdAsync(id);
 
             if (categoryDto == null) return NotFound();
 

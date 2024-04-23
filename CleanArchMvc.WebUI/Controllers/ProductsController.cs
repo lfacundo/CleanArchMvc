@@ -63,7 +63,7 @@ namespace CleanArchMvc.WebUI.Controllers
 
             ViewBag.CategoryId = new SelectList(await _categoryService.GetAllAsync(), "Id", "Name", products.CategoryId);
 
-            return View();
+            return View(products);
         }
 
         [HttpPost]
