@@ -1,0 +1,18 @@
+﻿@model CategoryDTO
+@{
+    var btnSave = "Register Category";
+    if (Model != null)
+    {
+        btnSave = "Save";
+    }
+}
+
+<div class="form-group">
+    <label asp-for="Name" class="control-label"></label>
+    <input asp-for="Name" class="form-control"/>
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <input type="submit" value="@btnSave" class="btn btn-primary"/>
+    <a asp-action="Index" class="btn btn-info">Back</a>
+</div>

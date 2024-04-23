@@ -39,7 +39,7 @@ namespace CleanArchMvc.Application.Services
             if (productsByIdQuery == null)
                 throw new Exception($"Error");
 
-            var result = _mediator.Send(productsByIdQuery);
+            var result = await _mediator.Send(productsByIdQuery);
 
             return _mapper.Map<ProductDTO>(result);
         }
@@ -69,7 +69,7 @@ namespace CleanArchMvc.Application.Services
             if (removeProduct == null)
                 throw new Exception($"Error");
 
-            var result = _mediator.Send(removeProduct);
+            var result = await _mediator.Send(removeProduct);
         }
 
         public async Task UpdateAsync(ProductDTO obj)
