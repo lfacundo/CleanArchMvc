@@ -1,0 +1,16 @@
+﻿@model ProductDTO
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <hr />
+    <partial name="Partials/_DetailsDelete"/>
+    <div>
+        <a asp-action="Edit" asp-route-id="Id" class="btn btn-primary">Editar</a>
+        <a asp-action="Index">Back</a>s
+    </div>
+</div>
