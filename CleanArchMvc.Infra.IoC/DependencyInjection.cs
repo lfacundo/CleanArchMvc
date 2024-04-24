@@ -32,6 +32,16 @@ namespace CleanArchMvc.Infra.IoC
             services.ConfigureApplicationCookie(options =>
                 options.AccessDeniedPath = "/Account/Login");
 
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequiredUniqueChars = 1;
+            });
+
             services.AddScoped<IAuthenticate, AuthenticateService>();
             services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
 

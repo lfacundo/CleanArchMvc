@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using CleanArchMvc.Application.DTO_s;
 using CleanArchMvc.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -82,6 +83,7 @@ namespace CleanArchMvc.WebUI.Controllers
             return View(productDto);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
