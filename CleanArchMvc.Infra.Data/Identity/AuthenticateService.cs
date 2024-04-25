@@ -20,7 +20,7 @@ namespace CleanArchMvc.Infra.Data.Identity
             return result.Succeeded;
         }
 
-        public async Task<bool> RegisterUser(string email, string password)
+        public async Task<bool> RegisterUser(string email, string password, string profile)
         {
             var applicationUser = new ApplicationUser
             {
@@ -32,6 +32,7 @@ namespace CleanArchMvc.Infra.Data.Identity
 
             if (result.Succeeded)
             {
+                await _userManager.AddToRoleAsync(applicationUser, profile);
                 await _signInManager.SignInAsync(applicationUser, isPersistent: false);
             }
             return result.Succeeded;

@@ -17,5 +17,8 @@ namespace CleanArchMvc.WebUI.ViewModels
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Passwords don't match")]
         public string ConfirmPassword { get; set; }
+
+        [Required(ErrorMessage = "Selecione o perfil do usuário")]
+        public string Perfil { get; set; }
     }
 }

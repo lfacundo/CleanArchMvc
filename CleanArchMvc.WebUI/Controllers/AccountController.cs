@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using CleanArchMvc.Domain.Account;
 using CleanArchMvc.WebUI.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchMvc.WebUI.Controllers
@@ -43,16 +44,18 @@ namespace CleanArchMvc.WebUI.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            var result = await _authenticate.RegisterUser(model.Email, model.Password);
+            var result = await _authenticate.RegisterUser(model.Email, model.Password, model.Perfil);
             if (result)
             {
                 return Redirect("/");

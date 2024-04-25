@@ -1,4 +1,11 @@
-﻿@if (Context.User.Identity.IsAuthenticated)
+﻿@if (Context.User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <li class="nav-item">
+        <a class="nav-link text-capitalize" asp-controller="Account" asp-action="Logout" style="color: blue">@Context.User.Identity.Name - Logout</a>
+        <a class="nav-link text-capitalize" asp-controller="Account" asp-action="Register" style="color: blue">Register</a>
+    </li>
+}
+else if (Context.User.Identity.IsAuthenticated)
 {
     <li class="nav-item">
         <a class="nav-link text-capitalize" asp-controller="Account" asp-action="Logout" style="color: blue">@Context.User.Identity.Name - Logout</a>
@@ -8,6 +15,5 @@ else
 {
     <li class="nav-item">
         <a class="nav-link text-capitalize" asp-controller="Account" asp-action="Login" style="color: blue">Login</a>
-        <a class="nav-link text-capitalize" asp-controller="Account" asp-action="Register" style="color: blue">Register</a>
     </li>
 }
