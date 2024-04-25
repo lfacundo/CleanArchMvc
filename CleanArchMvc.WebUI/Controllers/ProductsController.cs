@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CleanArchMvc.WebUI.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly IProductService _productService;
@@ -39,6 +40,7 @@ namespace CleanArchMvc.WebUI.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ProductDTO productDto)
         {
             if (ModelState.IsValid)
@@ -68,6 +70,7 @@ namespace CleanArchMvc.WebUI.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, ProductDTO productDto)
         {
             if (id != productDto.Id) return NotFound();

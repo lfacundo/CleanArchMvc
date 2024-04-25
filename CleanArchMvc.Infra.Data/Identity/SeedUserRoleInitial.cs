@@ -20,7 +20,7 @@ namespace CleanArchMvc.Infra.Data.Identity
             if (_userManager.FindByEmailAsync("user@gmail.com").Result == null)
             {
                 ApplicationUser user = new ApplicationUser();
-                user.UserName = "user";
+                user.UserName = "user@gmail.com";
                 user.Email = "user@gmail.com";
                 user.NormalizedUserName = "USER";
                 user.NormalizedEmail = "USER@GMAIL.COM";
@@ -39,7 +39,7 @@ namespace CleanArchMvc.Infra.Data.Identity
             if (_userManager.FindByEmailAsync("luizg5913@gmail.com").Result == null)
             {
                 ApplicationUser user = new ApplicationUser();
-                user.UserName = "lfacundo";
+                user.UserName = "luizg5913@gmail.com";
                 user.Email = "luizg5913@gmail.com";
                 user.NormalizedUserName = "LFACUNDO";
                 user.NormalizedEmail = "LUIZG5913@GMAIL.COM";

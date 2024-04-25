@@ -35,7 +35,7 @@ namespace CleanArchMvc.WebUI.Controllers
                     return RedirectToAction("Index", "Home");
                 }
 
-                return RedirectToAction(model.ReturnUrl);
+                return Redirect(model.ReturnUrl);
             }
             else
             {
@@ -65,6 +65,12 @@ namespace CleanArchMvc.WebUI.Controllers
                 ModelState.AddModelError(string.Empty, "Invalid register attempt (password must be strong).");
                 return View(model);
             }
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _authenticate.Logout();
+            return RedirectToAction(nameof(Login));
         }
     }
 }
