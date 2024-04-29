@@ -53,11 +53,11 @@ namespace CleanArchMvc.Infra.IoC
 
             //Notification
             services.AddNotyf(config =>
-            {
-                config.DurationInSeconds = 5;
-                config.IsDismissable = true;
-                config.Position = NotyfPosition.TopRight;
-            }
+                {
+                    config.DurationInSeconds = 5;
+                    config.IsDismissable = true;
+                    config.Position = NotyfPosition.TopRight;
+                }
             );
 
             return services;
