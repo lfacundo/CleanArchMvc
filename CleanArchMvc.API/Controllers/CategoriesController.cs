@@ -21,10 +21,63 @@ namespace CleanArchMvc.API.Controllers
         {
             var categories = await _categoryService.GetAllAsync();
 
-            if(categories == null)
+            if (categories == null)
                 return NotFound("Categories not found");
 
             return Ok(categories);
         }
+
+        [HttpGet("{id:int}", Name = "GetCategory")]
+        public async Task<ActionResult<CategoryDTO>> GetByIdAsync(int? id)
+        {
+            if (id == null)
+                return NotFound("id not found");
+
+            var category = await _categoryService.GetByIdAsync(id);
+
+            if (category == null)
+                return NotFound("Category not found");
+
+            return Ok(category);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateAsync([FromBody] CategoryDTO categoryDTO)
+        {
+            if (categoryDTO == null)
+                return BadRequest("Invalid Data");
+
+            await _categoryService.CreateAsync(categoryDTO);
+
+            return new CreatedAtRouteResult("GetCategory", new { id = categoryDTO.Id }, categoryDTO);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> Put(int id, [FromBody] CategoryDTO categoryDto)
+        {
+            if (id != categoryDto.Id)
+                return BadRequest();
+
+            if (categoryDto.Id == null)
+                return BadRequest();
+
+            await _categoryService.UpdateAsync(categoryDto);
+
+            return Ok(categoryDto);
+        }
+
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult<CategoryDTO>> Delete(int id)
+        {
+            var category = await _categoryService.GetByIdAsync(id);
+
+            if (category == null)
+                return NotFound("Category not found");
+
+            await _categoryService.RemoveAsync(id);
+
+            return Ok(category);
+        } 
     }
 }
