@@ -59,7 +59,7 @@ namespace CleanArchMvc.API.Controllers
             if (id != categoryDto.Id)
                 return BadRequest();
 
-            if (categoryDto.Id == null)
+            if (categoryDto == null)
                 return BadRequest();
 
             await _categoryService.UpdateAsync(categoryDto);
