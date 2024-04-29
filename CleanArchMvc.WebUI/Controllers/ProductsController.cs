@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using CleanArchMvc.Application.DTO_s;
 using CleanArchMvc.Application.Interfaces;
+using CleanArchMvc.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -95,6 +96,10 @@ namespace CleanArchMvc.WebUI.Controllers
             var products = await _productService.GetByIdAsync(id);
 
             if (products == null) return NotFound();
+            var wwwroot = _environment.WebRootPath;
+            var image = Path.Combine(wwwroot, "images\\" + products.Image);
+            var exists = System.IO.File.Exists(image);
+            ViewBag.ImageExist = exists;
 
             return View(products);
         }

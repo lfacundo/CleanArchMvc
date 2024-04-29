@@ -42,7 +42,6 @@ namespace CleanArchMvc.API.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateAsync([FromBody] CategoryDTO categoryDTO)
         {
             if (categoryDTO == null)

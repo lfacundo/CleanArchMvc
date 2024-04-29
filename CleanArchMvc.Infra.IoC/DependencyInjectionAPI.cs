@@ -51,15 +51,6 @@ namespace CleanArchMvc.Infra.IoC
             //AutoMapper
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
-            //Notification
-            services.AddNotyf(config =>
-                {
-                    config.DurationInSeconds = 5;
-                    config.IsDismissable = true;
-                    config.Position = NotyfPosition.TopRight;
-                }
-            );
-
             return services;
         }
     }

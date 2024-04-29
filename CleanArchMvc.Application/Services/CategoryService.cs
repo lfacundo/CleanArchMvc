@@ -45,7 +45,7 @@ namespace CleanArchMvc.Application.Services
         public async Task UpdateAsync(CategoryDTO obj)
         {
             var entity = _mapper.Map<Category>(obj);
-            await _repository.RemoveAsync(entity);
+            await _repository.UpdateAsync(entity);
         }
     }
 }
